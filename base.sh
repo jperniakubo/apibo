@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Automation steps ###
 # Inside the project PROJECT
-cd /home/PROJECT
+cd /home/kpmgboapi
 # Remove older node_modules
 # rm -rf node_modules
 # Install Dependencies
