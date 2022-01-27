@@ -1,8 +1,8 @@
 name: itegracion continua con node.js
-on: 
-  pull_request
-    branches: [ development ]
-
+on:
+  push:
+    branches:    
+      - development
 jobs: 
   ci_to_master:
     runs-on: ubuntu-latest
