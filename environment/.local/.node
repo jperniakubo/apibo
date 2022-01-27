@@ -1,0 +1,4 @@
+NODE_VERSION=latest
+PROJECT_PATH=/opt/app/
+NODE_ENV=production
+YARN=false
