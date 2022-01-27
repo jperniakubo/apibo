@@ -1,0 +1,22 @@
+name: itegracion continua con node.js
+on: 
+  pull_request
+    branches: [ development ]
+
+jobs: 
+  ci_to_master:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with: 
+          node-version: 14.7.0
+        - run: chmod 777 ./base.sh
+        - run: sed -i "s/PROJECT/${PROJECT}/g" ./base.sh
+        - run: sed -i "s/%ENV/development/g" ./base.sh
+        - run: chmod 777 ./base.sh
+        - run: sed -i "s/PROJECT/${PROJECT}/g" ./package.json
+        - run: sed -i "s/.env.production/.env.development/g" ./package.json
+        - run: sed -i "s/NODE_ENV=production tsc/NODE_ENV=development tsc/g" ./package.json
+        - run: sed -i "s/NODE_ENV=production babel/NODE_ENV=development babel/g" ./package.json
+        - run: yarn super:build
