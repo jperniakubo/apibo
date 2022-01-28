@@ -14,3 +14,11 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: chmod 777 ./base.sh
+    - run: sed -i "s/PROJECT/kpmgboapi/g" ./base.sh
+    - run: sed -i "s/%ENV/development/g" ./base.sh
+    - run: chmod 777 ./base.sh
+    - run: sed -i "s/PROJECT/kpmgboapi/g" ./package.json
+    - run: sed -i "s/.env.production/.env.development/g" ./package.json
+    - run: sed -i "s/NODE_ENV=production tsc/NODE_ENV=development tsc/g" ./package.json
+    - run: sed -i "s/NODE_ENV=production babel/NODE_ENV=development babel/g" ./package.json
+    - run: yarn super:build
