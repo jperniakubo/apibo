@@ -12,6 +12,7 @@ jobs:
       with: 
         node-version: 14.7.0
         cache: 'npm'
+    - run: yarn install
     - run: npm install
     - run: chmod 777 ./base.sh
     - run: sed -i "s/PROJECT/kpmgboapi/g" ./base.sh
@@ -29,7 +30,7 @@ jobs:
         ssh_private_key: '-i cert/node_kpmg.pem"'
         local_path: './dist/*'
         remote_path: '/home/kpmgboapi/'
-        args: '-o ConnectTimeout=10'
+        args: '-o ConnectTimeout=5'
     - run: ls -alhr
     - run: chmod 400 ./cert/node_kpmg.pem
     - run: ssh -i ./cert/node_kpmg.pem node_kpmg@52.12.254.63 /home/kpmgboapi/base.sh
