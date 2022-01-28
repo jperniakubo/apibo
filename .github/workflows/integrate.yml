@@ -25,12 +25,12 @@ jobs:
     - run: yarn super:build
     - uses: wlixcc/SFTP-Deploy-Action@v1.0
       with:
-        username: 'root'
+        username: 'node_kpmg'
         server: '52.12.254.63'
         ssh_private_key: './cert/node_kpmg.pem'
         local_path: './dist/*'
-        remote_path: '/home/kpmgboapi/'
+        remote_path: './home/kpmgboapi/'
         args: '-o ConnectTimeout=5'
     - run: ls -alhr
     - run: chmod 400 ./cert/node_kpmg.pem
-    - run: ssh -i ./cert/node_kpmg.pem node_kpmg@52.12.254.63 /home/kpmgboapi/base.sh
+    - run: ssh -i ./cert/node_kpmg.pem node_kpmg@52.12.254.63 ./home/kpmgboapi/base.sh
