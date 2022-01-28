@@ -28,7 +28,7 @@ jobs:
       with:
         username: 'node_kpmg'
         server: '52.12.254.63'
-        ssh_private_key: './cert/node_kpmg.pem'
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
         local_path: './dist/*'
         remote_path: './home/kpmgboapi/'
         args: '-o ConnectTimeout=5'
