@@ -26,8 +26,8 @@ jobs:
     - uses: wlixcc/SFTP-Deploy-Action@v1.0
       with:
         username: 'node_kpmg'
-        server: 52.12.254.63
-        ssh_private_key: './cert/node_kpmg.pem'
+        server: '52.12.254.63'
+        ssh_private_key: '-i ./cert/node_kpmg.pem'
         local_path: './dist/*'
         remote_path: './home/kpmgboapi/'
         args: '-o ConnectTimeout=5'
