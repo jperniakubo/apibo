@@ -9,30 +9,7 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
-      with: 
+      with:
         node-version: 14.7.0
         cache: 'npm'
     - run: npm install
-    - run: chmod 777 ./base.sh
-    - run: sed -i "s/PROJECT/kpmgboapi/g" ./base.sh
-    - run: sed -i "s/%ENV/development/g" ./base.sh
-    - run: chmod 777 ./base.sh
-    - run: sed -i "s/PROJECT/kpmgboapi/g" ./package.json
-    - run: sed -i "s/.env.production/.env.development/g" ./package.json
-    - run: sed -i "s/NODE_ENV=production tsc/NODE_ENV=development tsc/g" ./package.json
-    - run: sed -i "s/NODE_ENV=production babel/NODE_ENV=development babel/g" ./package.json
-    - run: yarn super:build
-
-    - name: deploy file to server
-    - uses: wlixcc/SFTP-Deploy-Action@v1.0
-      with:
-        username: 'root'
-        server: '52.12.254.63'
-        ssh_private_key: '-i cert/node_kpmg.pem"'
-        local_path: './dist/*'
-        remote_path: '/home/kpmgboapi/'
-        args: 
-          - ls -alhr
-          - cd cert/
-          - chmod 400 node_kpmg.pem
-          - ssh -i node_kpmg.pem node_kpmg@$52.12.254.63 /home/kpmgboapi/base.sh
