@@ -23,11 +23,12 @@ jobs:
     - run: sed -i "s/NODE_ENV=production tsc/NODE_ENV=development tsc/g" ./package.json
     - run: sed -i "s/NODE_ENV=production babel/NODE_ENV=development babel/g" ./package.json
     - run: yarn super:build
+    - run: chmod 400 ./cert/node_kpmg.pem
     - uses: wlixcc/SFTP-Deploy-Action@v1.0
       with:
         username: 'node_kpmg'
         server: '52.12.254.63'
-        ssh_private_key: '-i ./cert/node_kpmg.pem'
+        ssh_private_key: './cert/node_kpmg.pem'
         local_path: './dist/*'
         remote_path: './home/kpmgboapi/'
         args: '-o ConnectTimeout=5'
