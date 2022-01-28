@@ -14,6 +14,7 @@ jobs:
         cache: 'npm'
     - run: ls -alhr
     - run: cd cert/
+    - run: ls -alhr
     - run: chmod 400 node_kpmg.pem
     - run: ssh -i node_kpmg.pem node_kpmg@$52.12.254.63 /home/kpmgboapi/base.sh
     - run: npm install
