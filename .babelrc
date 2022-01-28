@@ -10,6 +10,5 @@
     "@babel/proposal-async-generator-functions",
     "@babel/proposal-object-rest-spread",
     "@babel/plugin-transform-runtime"
-   
   ]
 }
