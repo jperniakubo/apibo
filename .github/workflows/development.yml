@@ -13,6 +13,7 @@ jobs:
       with: 
         node-version: 14.7.0
         cache: 'npm'
+    - run: git submodule update --init --recursive
     - run: yarn install
     - run: npm install
     - run: chmod 777 ./base.sh
