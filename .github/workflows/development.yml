@@ -33,7 +33,6 @@ jobs:
         local_path: './dist/*'
         remote_path: '/home/${{ secrets.PROJECT }}/'
         args: '-o ConnectTimeout=5'
-        
 
         
 
