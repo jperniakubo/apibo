@@ -227,8 +227,8 @@ export class OnboardingService {
 
   recoveryPassword = async (email: string) => {
     // Check if User Exist
+    console.log('emaillll', email);
     const passwordResetRepository = new PasswordResetRepository();
-    const usersRepository = new UsersRepository();
 
     const userExists: any = await BoAdmin.findOne({where: {email}});
     if (!userExists) {

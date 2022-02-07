@@ -101,6 +101,7 @@ export class BoAdminController {
     nextOrError: NextFunction
   ) => {
     const data: IComplements.BoListUsers = request.body;
+    console.log('data', data);
     const content = await this.boAdminService.boListUsers(data);
     await this.complementResponse.returnData(response, nextOrError, content);
   };
